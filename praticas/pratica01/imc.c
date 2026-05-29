@@ -1,15 +1,13 @@
-
 #include <stdio.h>
 
 float imc(float peso, float altura)
 {
+    if (peso <= 0 || altura <= 0) {
+        fprintf(stderr, "Erro: Peso e altura devem ser valores positivos.\n");
+        return -1;
+    }
     return peso / (altura*altura);
 }
-
-typedef struct {
-    float peso;
-    float altura;
-} Pessoa;
 
 int main() {  
     FILE *arquivo = fopen("imc.txt", "w+");
@@ -17,14 +15,7 @@ int main() {
         printf("Erro ao abrir o arquivo.\n");
         return 1;
     }
-    Pessoa p;
-    printf("Digite o peso: ");
-    scanf("%f", &p.peso);
-    printf("Digite a altura: ");
-    scanf("%f", &p.altura);
-    float imc_result = imc(p.peso, p.altura);
-    fprintf(arquivo, "Peso: %.2f\n", p.peso);
-    fprintf(arquivo, "Altura: %.2f\n", p.altura);
+    float imc_result = imc(70, 1.75);
     fprintf(arquivo, "IMC: %.2f\n", imc_result);
     if (imc_result < 18.5) {
         fprintf(arquivo, "Abaixo do peso.\n");
