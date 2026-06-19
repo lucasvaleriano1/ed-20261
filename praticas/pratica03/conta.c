@@ -11,14 +11,14 @@ Conta conta_criar(int numero)
 
 void conta_depositar(Conta *conta, double valor)
 {
-    conta->saldo += valor;Expand commentComment on line R14
+    conta->saldo += valor;
 }
 
 void conta_sacar(Conta *conta, double valor)
 {
     if (conta->saldo >= valor)
     {
-        conta->saldo -= valor;Expand commentComment on lines R19 to R21
+    conta->saldo -= valor;
     }
 }
 
